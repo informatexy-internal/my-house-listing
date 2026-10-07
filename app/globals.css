@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+/*
+ * Clay & Pine design system
+ * Tokens live in @theme (they become Tailwind utilities: bg-pine, text-clay, font-display...).
+ * Reusable patterns are the @utility blocks below. Change the look here, not in components.
+ */
+@theme {
+  /* Surfaces */
+  --color-paper: #ffffff;      /* page background, white */
+  --color-sand: #f2e9da;       /* raised/tinted surface */
+  --color-line: #e3d8c5;       /* borders, dividers */
+
+  /* Text */
+  --color-ink: #1d2623;        /* body text */
+  --color-ink-soft: #5d6a65;   /* secondary text */
+
+  /* Brand: pine (primary) */
+  --color-pine: #234a40;
+  --color-pine-deep: #14302a;
+  --color-pine-mist: #dfe9e4;
+
+  /* Brand: clay (accent, used sparingly: CTAs, icons, highlights) */
+  --color-clay: #c4623a;
+  --color-clay-deep: #a94e2a;
+  --color-clay-mist: #f6dccf;
+
+  /* Type */
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  /* Shape & depth */
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+  --shadow-soft: 0 1px 2px rgb(29 38 35 / 0.05), 0 8px 24px -8px rgb(29 38 35 / 0.12);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-paper font-sans text-ink antialiased; }
+  h1, h2, h3 { @apply font-display; }
+  :focus-visible { outline: 3px solid var(--color-clay); outline-offset: 2px; }
+  ::selection { background: var(--color-clay-mist); }
+}
+
+/* Buttons: one shape, three tones */
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-pill px-6 py-3 font-semibold transition active:scale-[0.98] disabled:opacity-60;
+}
+@utility btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-pill bg-pine px-6 py-3 font-semibold text-paper transition hover:bg-pine-deep active:scale-[0.98] disabled:opacity-60;
+}
+@utility btn-accent {
+  @apply inline-flex items-center justify-center gap-2 rounded-pill bg-clay px-6 py-3 font-semibold text-white transition hover:bg-clay-deep active:scale-[0.98] disabled:opacity-60;
+}
+@utility btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-pill border border-pine/30 px-6 py-3 font-semibold text-pine transition hover:bg-pine-mist active:scale-[0.98] disabled:opacity-60;
+}
+
+/* Surfaces */
+@utility card {
+  @apply rounded-card border border-line bg-white shadow-soft;
+}
+@utility card-tint {
+  @apply rounded-card bg-sand;
+}
+
+/* Small pieces */
+@utility chip {
+  @apply inline-flex items-center gap-2 rounded-pill bg-pine-mist px-4 py-2 text-sm font-medium text-pine-deep;
+}
+@utility eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.14em] text-clay;
+}
+@utility section-title {
+  @apply text-3xl font-semibold tracking-tight text-pine-deep sm:text-4xl;
+}
+@utility field {
+  @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-ink placeholder:text-ink-soft/60 focus:border-pine focus:outline-none;
+}
+@utility label {
+  @apply grid gap-1.5 text-sm font-medium text-ink;
+}

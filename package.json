@@ -1,0 +1,28 @@
+{
+  "name": "my-house-listing",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "photos": "node scripts/gen-photos.mjs",
+    "predev": "npm run photos",
+    "prebuild": "npm run photos",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve out",
+    "lint": "npm run photos && tsc --noEmit"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.6.0"
+  }
+}
